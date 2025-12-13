@@ -1,0 +1,9 @@
+shared:
+  app: <%= ENV.fetch("URLS_APP", "http://localhost:3000") %>
+  site: <%= ENV.fetch("URLS_SITE", "https://saas.railsdesigner.com") %>
+  docs: <%= ENV.fetch("URLS_DOCS", "https://example.com/docs/") %>
+  terms: <%= ENV.fetch("URLS_TERMS", "https://example.com/legal/terms/") %>
+  privacy: <%= ENV.fetch("URLS_PRIVACY", "https://example.com/legal/privacy/") %>
+
+production:
+  app: <%= ENV.fetch("URLS_APP", "https://app.example.com") %>

@@ -1,0 +1,16 @@
+<% content_for :title, "Create your account" %>
+<% content_for :page_title, "Create your account" %>
+
+<%= form_with model: @signup, url: signup_path, class: "px-2 md:px-4" do |form| %>
+  <%= form.input :email_address %>
+
+  <%= form.input :password %>
+
+  <div class="buttons">
+    <%= form.submit "Sign up", data: {turbo_submits_with: "Signing up…"}, class: "btn-primary" %>
+  </div>
+<% end %>
+
+<p class="px-2 pt-4 pb-2 border-t border-gray-100 md:pb-4">
+  <%= link_to "Already have an account?", new_session_path, class: "block text-center text-sm font-medium text-gray-500 hover:underline" %>
+</p>

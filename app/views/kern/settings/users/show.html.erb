@@ -1,0 +1,15 @@
+<% content_for :title, "Account" %>
+
+<%= component("heading", breadcrumbs: [{label: "Settings", href: settings_path}]) { "Account" } %>
+
+<%= component "container" do %>
+  <%= form_with model: [:settings, @user], class: "max-w-lg" do |form| %>
+    <%= form.input :email_address %>
+
+    <%= form.input :password %>
+
+    <div class="buttons">
+      <%= form.submit "Save", class: "btn-primary" %>
+    </div>
+  <% end %>
+<% end %>

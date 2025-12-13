@@ -1,0 +1,13 @@
+Description:
+  Installs Kern into your Rails application.
+
+Example:
+  rails generate kern:install
+
+  This will:
+    - Run Kern migrations
+    - Inject Authentication concern into ApplicationController
+    - Set Kern layout in ApplicationController
+    - Install Rails Icons (optional)
+    - Copy configuration files
+    - Mount Kern engine routes

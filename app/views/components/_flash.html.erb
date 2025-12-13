@@ -1,0 +1,7 @@
+<ul id="flash" class="flex flex-col gap-1 fixed right-4 bottom-4 max-w-md">
+  <% flash.each do |type, messages| %>
+    <% Array(messages).each do |message| %>
+      <%= component "flash/message", type:, message: %>
+    <% end %>
+  <% end %>
+</ul>

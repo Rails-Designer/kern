@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%%= content_for?(:title)? "#{yield(:title)} - #{Rails.application.name.humanize}" : Rails.application.name.humanize %>
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%%= csrf_meta_tags %>
+    <%%= csp_meta_tag %>
+
+    <%%= stylesheet_link_tag :tailwind, "data-turbo-track": "reload" %>
+  </head>
+
+  <body class="<%%= class_names("antialiased bg-white selection:bg-pink-200/40 selection:text-pink-800/70", yield(:body_class)) %>">
+    <div class="flex">
+      <%%= render partial: "layouts/kern/application/navigation",
+        locals: {
+          links: [
+            {label: "Home", href: root_path, icon: "house-line"},
+          ]
+        }
+      %>
+
+      <div class="flex-1">
+        <%%= yield %>
+      </div>
+    </div>
+
+    <%%= component "flash" %>
+  </body>
+</html>

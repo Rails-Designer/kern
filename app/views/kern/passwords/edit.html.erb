@@ -1,0 +1,12 @@
+<% content_for :title, "Update password" %>
+<% content_for :page_title, "Update account password" %>
+
+<%= form_with url: password_path(params[:token]), method: :put, class: "px-2 pb-2 md:px-4 md:pb-4" do |form| %>
+  <%= form.input :password, required: true, autocomplete: "new-password", placeholder: "Enter new password", maxlength: 72 %>
+
+  <%= form.input :password_confirmation, required: true, autocomplete: "new-password", placeholder: "Repeat new password", maxlength: 72 %>
+
+  <div class="buttons">
+    <%= form.submit "Save", class: "btn-primary" %>
+  </div>
+<% end %>

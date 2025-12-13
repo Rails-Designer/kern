@@ -1,0 +1,52 @@
+@layer components {
+  [class^="btn-"] {
+    @apply flex items-center gap-x-1 w-full px-3.5 py-1.25 md:w-auto;
+    @apply text-sm font-medium text-center tracking-[.0125em];
+    @apply border border-transparent;
+    @apply ring ring-transparent rounded-sm;
+    @apply cursor-pointer;
+    @apply transition;
+
+    [data-slot="icon"],
+    svg {
+      @apply size-3.5;
+    }
+  }
+
+  .btn-secondary {
+    @apply text-gray-800;
+    @apply border-white;
+    @apply ring-gray-300;
+
+    [data-slot="icon"],
+    svg {
+      @apply text-gray-600;
+    }
+
+    &:hover {
+      @apply ring-gray-300;
+    }
+  }
+
+  .btn-primary {
+    @apply bg-brand-600;
+    @apply text-white;
+
+    [data-slot="icon"],
+    svg {
+      @apply text-white;
+    }
+
+    &:hover {
+      @apply bg-brand-700;
+    }
+  }
+
+  .btn-block {
+    @apply block w-full;
+  }
+
+  .buttons {
+    @apply flex justify-end mt-4;
+  }
+}

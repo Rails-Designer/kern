@@ -1,0 +1,17 @@
+Description:
+  Generates Kern foundational components (models, controllers, views and routes).
+
+Example:
+  rails generate kern:feature sessions
+
+  This will generate the sessions feature with model, controller, views and routes.
+
+  rails generate kern:feature sessions passwords
+
+  This will generate sessions and passwords features.
+
+Available features:
+  passwords   Password reset functionality
+  sessions    User authentication (sign in/out)
+  settings    User settings (user, workspace settings and subscription/billing)
+  signups     User registration

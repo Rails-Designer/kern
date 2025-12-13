@@ -1,0 +1,10 @@
+<% content_for :title, "Reset your password" %>
+<% content_for :page_title, "Reset your password" %>
+
+<%= form_with url: passwords_path, class: "px-2 pb-2 md:px-4 md:pb-4" do |form| %>
+  <%= form.input :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %>
+
+  <div class="buttons">
+    <%= form.submit "Continue", class: "btn-primary" %>
+  </div>
+<% end %>

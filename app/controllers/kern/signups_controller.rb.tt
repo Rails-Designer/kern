@@ -1,0 +1,31 @@
+module Kern
+  class SignupsController < ApplicationController
+    allow_unauthenticated_access only: %w[new create]
+
+    before_action :redirect_to_root, if: -> { authenticated? }, only: %w[new create]
+
+    layout "kern/auth"
+
+    def new
+      @signup = Signup.new
+    end
+
+    def create
+      @signup = Signup.new(signup_params)
+
+      if @signup.save
+        start_new_session_for @signup.user
+
+        redirect_to root_path
+      else
+        render :new, status: :unprocessable_entity
+      end
+    end
+
+    private
+
+    def signup_params
+      params.expect(signup: [:email_address, :password])
+    end
+  end
+end

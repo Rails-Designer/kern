@@ -31,5 +31,5 @@ git push
 git tag v$VERSION
 git push --tags
 
-rake build
+bundle exec rake build
 gem push "pkg/kern-$VERSION.gem"

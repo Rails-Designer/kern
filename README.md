@@ -105,7 +105,7 @@ Update user's email and password.
 
 ### Multi-tenancy
 
-By default a `Workspace` record is created upon sign up. Each user is associated to it using a `Member` join table. Next to that: each `Member` can have multiple `Role`'s you can use to determine if they are authorized.
+By default a `Workspace` record is created upon sign up. Each `User` is associated to it using a `Member` join table. Each `Member` can have multiple `Role`'s you can use to authorize if they should have access (`Current.member.has_role? :owner`).
 
 
 ### Billing & subscriptions using Stripe
@@ -118,7 +118,7 @@ Following [Rails Designer's Stripe Billing set up](https://railsdesigner.com/saa
 Add more users to your `Workspace`, update roles or remove them again.
 
 
-### Form Builder
+### Form builder
 
 Pulled from [Rails Designer's Components](https://railsdesigner.com/components/), the included Form Builder lets you quicly build beautiful forms. Including a magic `input` helper that works like this:
 
@@ -131,13 +131,13 @@ Pulled from [Rails Designer's Components](https://railsdesigner.com/components/)
 ```
 
 
-### Component Helper
+### Component helper
 
 Some basic components are included like:
 
 - container; keep all your app's content in check
 - heading; have consistent headings for each screen
-- enhanced dialog element (works with Turbo Frames and can be shown as a `modal` or a `slider`)
+- enhanced dialog element (works with Turbo Frames and, includes `centered` or a `drawer` variants)
 - flash messages (notifiy your users from the bottom-right)
 
 These are built using vanilla Rails, as [described in this article]() (`component` helper included).
@@ -155,17 +155,17 @@ When using Turbo Stream responses, use `turbo_stream.notify "Updated"` to notifi
 
 ## Rails Icons support
 
-The application/dashboard layout and the Form Builder have support for [Rails Icons](https://github.com/Rails-Desiger/rails_icons).
+The application/dashboard layout and the Form Builder have optional support for [Rails Icons](https://github.com/Rails-Desiger/rails_icons). Run `bin/rails generate rails_icons:install --libraries=phosphor` to enable them.
 
 
 ### Sluggable concern
 
-If you do not want to expose the record's primary key, use the `Sluggable` concern. Include it in the model, make sure it has a (unique) `slug` column, and look up records now using `ModelName.sluggable.find(params[:id])`.
+If you do not want to expose the record's primary key, use the `Sluggable` concern. Include it in the model, make sure it has a (unique) `slug` column, and look up records using `ModelName.sluggable.find(params[:id])`.
 
 
 ### Configuration
 
-Little syntactic sugar on top of Rails' `config_for` as explained [in this article](https://railsdesigner.com/saas/configuration/). Keep configuration together in, e.g. `config/configuration/urls.yml` and call each value like `Config::Urls.docs`.^
+Little syntactic sugar on top of Rails' `config_for` as explained [in this article](https://railsdesigner.com/saas/configuration/). Keep configuration together in, e.g. `config/configuration/urls.yml` and call each value like `Config::Urls.docs`.
 
 
 ## Contributing

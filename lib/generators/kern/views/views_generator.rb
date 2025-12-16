@@ -2,7 +2,7 @@ module Kern
   class ViewsGenerator < Rails::Generators::Base
     source_root File.expand_path("../../../../../app/views", __FILE__)
 
-    AVAILABLE_VIEWS = %w[passwords sessions settings signups layouts]
+    AVAILABLE_VIEWS = %w[layouts passwords sessions settings signups]
 
     argument :views, type: :array, default: [], banner: "view view", desc: "Select specific view directories to generate (#{AVAILABLE_VIEWS.join(", ")}). Leave empty for all."
 

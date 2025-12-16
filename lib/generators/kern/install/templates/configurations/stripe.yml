@@ -1,0 +1,11 @@
+shared:
+  api_key: <%= ENV.fetch("STRIPE_API_KEY", Rails.application.credentials&.stripe&.api_key) %>
+  api_version: <%= ENV.fetch("STRIPE_API_VERSION", "2025-10-29.clover") %>
+  max_network_retries: <%= ENV.fetch("STRIPE_MAX_NETWORK_RETRIES", 2) %>
+
+development:
+  default_price_id: default_price_id
+
+production:
+  default_price_id: <%= ENV.fetch("STRIPE_DEFAULT_PRICE_ID", "price_1SV3laIh6mxtl9CDpVY0viQy") %>
+  signing_secret_key: <%= ENV.fetch("STRIPE_SIGNING_KEY", Rails.application.credentials&.stripe&.signing_secret) %>

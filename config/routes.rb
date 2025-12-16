@@ -2,7 +2,11 @@ Kern::Engine.routes.draw do
   resource :settings, only: %w[show]
   namespace :settings do
     resource :user, path: "account", only: %w[show update]
+
+    resource :subscriptions, only: %w[show]
   end
+
+  resource :subscriptions, module: :billing_profiles, only: %w[create edit]
 
   resource :signup, only: %w[new create]
 

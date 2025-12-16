@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_01_01_000006) do
+ActiveRecord::Schema[8.1].define(version: 2025_01_01_000008) do
   create_table "actors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "member_id", null: false
@@ -18,6 +18,34 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_01_000006) do
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_actors_on_member_id"
     t.index ["role_id"], name: "index_actors_on_role_id"
+  end
+
+  create_table "billing_profile_subscriptions", force: :cascade do |t|
+    t.integer "billing_profile_id", null: false
+    t.datetime "cancel_at"
+    t.datetime "created_at", null: false
+    t.datetime "current_period_end_at"
+    t.json "metadata", default: {}, null: false
+    t.string "slug", null: false
+    t.string "status", null: false
+    t.string "subscription_id", null: false
+    t.string "subscription_item_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["billing_profile_id"], name: "index_billing_profile_subscriptions_on_billing_profile_id"
+    t.index ["slug", "billing_profile_id"], name: "idx_on_slug_billing_profile_id_ba4f664342", unique: true
+    t.index ["subscription_id"], name: "index_billing_profile_subscriptions_on_subscription_id"
+    t.index ["subscription_item_id"], name: "index_billing_profile_subscriptions_on_subscription_item_id"
+  end
+
+  create_table "billing_profiles", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "external_id"
+    t.string "slug"
+    t.datetime "updated_at", null: false
+    t.integer "workspace_id", null: false
+    t.index ["external_id"], name: "index_billing_profiles_on_external_id"
+    t.index ["slug", "workspace_id"], name: "index_billing_profiles_on_slug_and_workspace_id", unique: true
+    t.index ["workspace_id"], name: "index_billing_profiles_on_workspace_id"
   end
 
   create_table "members", force: :cascade do |t|
@@ -68,6 +96,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_01_000006) do
 
   add_foreign_key "actors", "members"
   add_foreign_key "actors", "roles"
+  add_foreign_key "billing_profile_subscriptions", "billing_profiles"
+  add_foreign_key "billing_profiles", "workspaces"
   add_foreign_key "members", "users"
   add_foreign_key "members", "workspaces"
   add_foreign_key "sessions", "users"

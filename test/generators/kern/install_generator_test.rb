@@ -15,6 +15,15 @@ module Kern
       copy_application_controller
     end
 
+    test "adds required gems" do
+      run_generator %w[--skip-migrations]
+
+      assert_file "Gemfile" do |content|
+        assert_match(/gem ['"]stripe['"]/, content)
+        assert_match(/gem ['"]rails_icons['"]/, content)
+      end
+    end
+
     test "injects authentication into application controller" do
       run_generator %w[--skip-migrations]
 
@@ -30,6 +39,8 @@ module Kern
     test "creates configuration files" do
       run_generator %w[--skip-migrations]
 
+      assert_file "config/configurations/stripe.yml"
+      assert_file "config/configurations/plans.yml"
       assert_file "config/configurations/urls.yml"
       assert_file "config/configurations/README.md"
     end

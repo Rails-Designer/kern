@@ -11,7 +11,7 @@
     <%= stylesheet_link_tag :tailwind, "data-turbo-track": "reload" %>
   </head>
 
-  <body class="<%= class_names("antialiased bg-white selection:bg-pink-200/40 selection:text-pink-800/70", yield(:body_class)) %>">
+  <body class="<%= class_names("antialiased bg-white selection:bg-blue-200/40 selection:text-blue-800/70", yield(:body_class)) %>">
     <div class="flex">
       <%= render partial: "layouts/kern/application/navigation",
         locals: {

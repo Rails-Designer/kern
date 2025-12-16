@@ -9,6 +9,7 @@
     <%%= csp_meta_tag %>
 
     <%%= stylesheet_link_tag :tailwind, "data-turbo-track": "reload" %>
+    <script defer src="https://cdn.jsdelivr.net/npm/attractivejs@0.9.0"></script>
   </head>
 
   <body class="<%%= class_names("antialiased bg-white selection:bg-pink-200/40 selection:text-pink-800/70", yield(:body_class)) %>">

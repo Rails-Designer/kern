@@ -1,0 +1,36 @@
+<dialog
+  id="overlay"
+  closedby="any"
+  variant="centered"
+  class="
+    hidden
+    px-3 py-4 max-w-md w-full
+    opacity-100 scale-100 translate-x-0 translate-y-0
+    shadow-2xl
+    transition-discrete
+    transition-all duration-300
+    open:block
+    opacity-0
+    [&:not([open])[variant=drawer]]:translate-x-full
+    [&:not([open])[variant=centered]]:scale-95
+    starting:opacity-0
+
+    /* Modal-specific */
+    [&[variant=centered]]:m-auto
+    [&[variant=centered]]:rounded-lg
+    [&[variant=centered]]:starting:scale-95
+    [&[variant=centered]]:backdrop:bg-gray-950/10 [&[variant=centered]]:backdrop:backdrop-blur-[2px]
+    [&[variant=centered]]:max-sm:mb-0 [&[variant=centered]]:max-sm:rounded-b-none
+    [&[variant=centered]]:max-sm:starting:translate-y-full
+    [&[variant=centered]]:max-sm:starting:scale-100
+    [&[variant=centered]]:sm:my-auto
+
+    /* Drawer-specific */
+    [&[variant=drawer]]:m-0 [&[variant=drawer]]:ml-auto
+    [&[variant=drawer]]:h-screen [&[variant=drawer]]:max-h-none [&[variant=drawer]]:max-w-sm
+    [&[variant=drawer]]:rounded-l-lg
+    [&[variant=drawer]]:starting:translate-x-full
+  "
+>
+  <%= tag.turbo_frame id: :modal %>
+</dialog>

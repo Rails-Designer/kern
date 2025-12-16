@@ -1,0 +1,24 @@
+Kern is ready. One quick setup step.
+
+Kern handles your SaaS foundation so you can focus on shipping your product.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+REQUIRED SETUP:
+
+  Encryption keys
+
+  Kern encrypts sensitive user data (email address, session IP and user agent).
+  You need to set up Rails encryption:
+
+    $ rails db:encryption:init
+
+  This will output the required encryption keys you can add to your credential files.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Next steps:
+
+  1. Run migrations: rails db:migrate
+  2. Start your server: bin/dev
+  3. Check out the full documentation at https://saas.railsdesigner.com/

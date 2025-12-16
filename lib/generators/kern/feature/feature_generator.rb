@@ -6,6 +6,8 @@ module Kern
 
     argument :features, type: :array, required: true, banner: "feature feature"
 
+    class_option :skip_encryption, type: :boolean, default: false, desc: "Skip encryption for sensitive fields"
+
     def copy_features
       features.each do |feature|
         verify_exists!(feature)
@@ -39,6 +41,8 @@ module Kern
       copy_file "app/controllers/kern/sessions_controller.rb", "app/controllers/sessions_controller.rb"
       directory "app/views/kern/sessions", "app/views/sessions"
 
+      remove_encryption_from_models
+
       route "resource :session, only: %w[new create destroy]"
     end
 
@@ -47,6 +51,8 @@ module Kern
 
       template "app/controllers/kern/signups_controller.rb.tt", "app/controllers/signups_controller.rb"
       directory "app/views/kern/signups", "app/views/signups"
+
+      remove_encryption_from_models
 
       route "resource :signup, only: %w[new create]"
     end
@@ -72,6 +78,13 @@ module Kern
           resource :user, path: "account", only: %w[show update]
         end
       RUBY
+    end
+
+    def remove_encryption_from_models
+      return unless options[:skip_encryption]
+
+      gsub_file "app/models/session.rb", /\n  encrypts :user_agent, :ip\n/, ""
+      gsub_file "app/models/user.rb", /\n  encrypts :email, deterministic: true, downcase: true\n/, ""
     end
   end
 end

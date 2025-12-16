@@ -44,5 +44,9 @@ module Kern
     def mount_engine
       route 'mount Kern::Engine => "/"'
     end
+
+    def post_install_message
+      readme "POST_INSTALL" if behavior == :invoke
+    end
   end
 end

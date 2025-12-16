@@ -1,6 +1,6 @@
 # Kern
 
-Rails engine that handles the SaaS foundation: authentication, team invitations, subscription/billing, and common partials. Skip the boilerplate and start shipping the actual product. Launch faster.
+Rails engine that handles the SaaS foundation: authentication, team invitations, subscription/billing, and common partials. Skip the boilerplate and start shipping the actual product.
 
 
 <table>

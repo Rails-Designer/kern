@@ -94,6 +94,18 @@ module Kern
       end
     end
 
+    test "generates sessions feature without encryption when skip_encryption is true" do
+      run_generator %w[sessions --skip-encryption]
+
+      assert_file "app/models/session.rb" do |content|
+        assert_no_match(/encrypts :user_agent, :ip/, content)
+      end
+
+      assert_file "app/models/user.rb" do |content|
+        assert_no_match(/encrypts :email, deterministic: true, downcase: true/, content)
+      end
+    end
+
     private
 
     def copy_routes_file

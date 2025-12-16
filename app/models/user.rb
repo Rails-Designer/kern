@@ -10,5 +10,5 @@ class User < ApplicationRecord
 
   validates :password, length: 8..128
 
-  # encrypts :email, deterministic: true, downcase: true
+  encrypts :email, deterministic: true, downcase: true
 end

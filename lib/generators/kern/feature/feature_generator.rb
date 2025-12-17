@@ -61,8 +61,12 @@ module Kern
     def generate_passwords
       copy_file "app/controllers/kern/passwords_controller.rb", "app/controllers/passwords_controller.rb"
       copy_file "app/mailers/kern/passwords_mailer.rb", "app/mailers/passwords_mailer.rb"
+
       template "app/views/kern/passwords_mailer/reset.text.erb.tt", "app/views/passwords_mailer/reset.text.erb"
       template "app/views/kern/passwords_mailer/reset.html.erb.tt", "app/views/passwords_mailer/reset.html.erb"
+
+      copy_file "app/views/kern/passwords/new.html.erb", "app/views/passwords/new.html.erb"
+      copy_file "app/views/kern/passwords/edit.html.erb", "app/views/passwords/edit.html.erb"
 
       route "resources :passwords, param: :token, only: %w[new create edit update]"
     end
@@ -73,6 +77,8 @@ module Kern
       template "app/controllers/concerns/authentication.rb.tt", "app/controllers/concerns/authentication.rb"
       copy_file "app/controllers/kern/sessions_controller.rb", "app/controllers/sessions_controller.rb"
 
+      copy_file "app/views/kern/sessions/new.html.erb", "app/views/sessions/new.html.erb"
+
       remove_encryption_from_models
 
       route "resource :session, only: %w[new create destroy]"
@@ -81,6 +87,10 @@ module Kern
     def generate_settings
       copy_file "app/controllers/kern/settings_controller.rb", "app/controllers/settings_controller.rb"
       directory "app/controllers/kern/settings", "app/controllers/settings"
+
+      copy_file "app/views/kern/settings/show.html.erb", "app/views/settings/show.html.erb"
+      copy_file "app/views/kern/settings/_cards.html.erb", "app/views/settings/_cards.html.erb"
+      copy_file "app/views/kern/settings/users/show.html.erb", "app/views/settings/users/show.html.erb"
 
       route <<~RUBY
         resource :settings, only: %w[show]
@@ -94,6 +104,8 @@ module Kern
       AUTHENTICATION_MODELS.each { copy_file "app/models/#{it}", "app/models/#{it}" } unless features.include?("sessions")
 
       template "app/controllers/kern/signups_controller.rb.tt", "app/controllers/signups_controller.rb"
+
+      copy_file "app/views/kern/signups/new.html.erb", "app/views/signups/new.html.erb"
 
       remove_encryption_from_models
 

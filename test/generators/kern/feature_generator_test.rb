@@ -63,6 +63,8 @@ module Kern
       assert_file "app/controllers/concerns/authentication.rb"
       assert_file "config/routes.rb", /resource :session, only: %w\[new create destroy\]/
 
+      assert_file "app/views/sessions/new.html.erb"
+
       assert_file "app/controllers/concerns/authentication.rb" do |content|
         assert_match(/redirect_to new_session_path/, content)
         assert_no_match(/kern\.new_session_path/, content)
@@ -88,6 +90,8 @@ module Kern
 
       assert_file "config/routes.rb", /resource :signup, only: %w\[new create\]/
 
+      assert_file "app/views/signups/new.html.erb"
+
       assert_file "app/controllers/signups_controller.rb" do |content|
         assert_match(/redirect_to root_path/, content)
 
@@ -103,6 +107,9 @@ module Kern
       assert_file "app/views/passwords_mailer/reset.html.erb"
       assert_file "app/views/passwords_mailer/reset.text.erb"
       assert_file "config/routes.rb", /resources :passwords, param: :token, only: %w\[new create edit update\]/
+
+      assert_file "app/views/passwords/new.html.erb"
+      assert_file "app/views/passwords/edit.html.erb"
 
       assert_file "app/views/passwords_mailer/reset.html.erb" do |content|
         assert_match(/edit_password_url\(@user.password_reset_token\)/, content)
@@ -120,14 +127,21 @@ module Kern
 
       assert_file "app/controllers/settings_controller.rb"
       assert_file "app/controllers/settings/users_controller.rb"
+
       assert_file "config/routes.rb", /resource :settings, only: %w\[show\]/
       assert_file "config/routes.rb", /namespace :settings/
+
+      assert_file "app/views/settings/show.html.erb"
+      assert_file "app/views/settings/_cards.html.erb"
+
+      assert_file "app/views/settings/users/show.html.erb"
     end
 
     test "generates multiple features" do
       run_generator %w[sessions passwords]
 
       assert_file "app/models/user.rb"
+
       assert_file "app/controllers/sessions_controller.rb"
       assert_file "app/controllers/passwords_controller.rb"
     end

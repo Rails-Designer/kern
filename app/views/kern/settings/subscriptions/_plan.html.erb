@@ -1,0 +1,35 @@
+<%# locals: (plan:) %>
+<li class="col-span-12 flex flex-col justify-between bg-white ring ring-gray-200/60 rounded-md md:col-span-4">
+  <div>
+    <div class="px-4 py-3 bg-gray-50">
+      <h3 class="text-sm font-medium tracking-tight text-gray-800 md:text-base">
+        <%= plan[:name] %>
+      </h3>
+
+      <p class="mt-1">
+        <span class="text-lg font-light text-gray-800">$</span>
+        <span class="text-3xl font-semibold text-gray-800"><%= plan[:amount] %></span>
+        <span class="text-base font-light text-gray-800">/month</span>
+      </p>
+    </div>
+
+    <ul class="grid gap-2 grow-1 px-4 py-4 bg-white border-t border-gray-100">
+      <% plan[:features].each do |key, value| %>
+        <% next if value == false %>
+
+        <li class="flex items-center gap-x-1.5 text-sm font-medium text-gray-800">
+          <%= icon "check", class: "size-3 text-brand-600 shrink-0" rescue nil %>
+
+          <% if value == true %>
+            <%= key.to_s.humanize %>
+          <% else %>
+            <% label = key.to_s.gsub('_count', '').humanize.downcase %>
+            <%= pluralize(number_with_delimiter(value), label) %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <%= button_to "Subscribe", subscriptions_path, form_class: "flex justify-center px-4 py-3 border-t border-gray-100", params: {price_id: plan[:price_id]}, class: "btn-primary btn-block" %>
+</li>

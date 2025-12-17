@@ -1,0 +1,11 @@
+<%= component("heading", breadcrumbs: [{label: "Settings", href: settings_path}]) { "Subscription" } %>
+
+<%= component "container" do %>
+  <%= tag.ul class: "grid grid-cols-12 gap-4 w-full my-20 md:gap-8" do %>
+    <% Config::Plans.except(:default).values.each do |plan| %>
+      <%= render "plan", plan: plan %>
+    <% end %>
+  <% end unless Current.workspace.subscribed? %>
+
+  <%= button_to "Go to billing", edit_subscriptions_path, method: :get, data: {turbo: false}, class: "btn-secondary" if Current.workspace.subscribed? %>
+<% end %>

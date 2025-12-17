@@ -1,0 +1,34 @@
+shared:
+  default:
+    name: default
+    price_id: price_id
+    amount: 0
+    features:
+      member_count: 1
+      email_notifications: true
+
+development:
+  pro_plan_id:
+    name: Pro
+    price_id: price_id
+    amount: 49
+    features:
+      member_count: 1
+      email_notifications: false
+
+  super_pro_plan_id:
+    name: Super Pro
+    price_id: price_id
+    amount: 149
+    features:
+      member_count: 10
+      email_notifications: true
+
+test:
+  pro_plan_id:
+    name: Pro
+    price_id: price_id
+    amount: 49
+    features:
+      member_count: 1
+      email_notifications: true

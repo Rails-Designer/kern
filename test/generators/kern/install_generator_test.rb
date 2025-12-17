@@ -21,6 +21,7 @@ module Kern
       assert_file "Gemfile" do |content|
         assert_match(/gem ['"]stripe['"]/, content)
         assert_match(/gem ['"]rails_icons['"]/, content)
+        assert_match(/gem ['"]fuik['"]/, content)
       end
     end
 
@@ -43,6 +44,17 @@ module Kern
       assert_file "config/configurations/plans.yml"
       assert_file "config/configurations/urls.yml"
       assert_file "config/configurations/README.md"
+    end
+
+    test "fuik setup for Stripe" do
+      run_generator %w[--skip-migrations]
+
+      assert_file "config/routes.rb", /mount Fuik::Engine/
+
+      assert_file "app/webhooks/stripe/base.rb"
+      assert_file "app/webhooks/stripe/checkout_session_completed.rb"
+      assert_file "app/webhooks/stripe/customer_subscription_updated.rb"
+      assert_file "app/webhooks/stripe/customer_subscription_deleted.rb"
     end
 
     test "adds engine route" do

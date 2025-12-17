@@ -15,6 +15,11 @@ Rails engine that handles the SaaS foundation: authentication, team invitations,
         <img src="https://raw.githubusercontent.com/Rails-Designer/kern/HEAD/.github/kern__dashboard.jpg" alt="Dashboard" width="400">
       </a>
     </td>
+    <td>
+      <a href="https://raw.githubusercontent.com/Rails-Designer/kern/HEAD/.github/kern__subscriptions.jpg" target="_blank">
+        <img src="https://raw.githubusercontent.com/Rails-Designer/kern/HEAD/.github/kern__subscriptions.jpg" alt="Subscriptions" width="400">
+      </a>
+    </td>
   </tr>
 </table>
 
@@ -110,7 +115,7 @@ By default a `Workspace` record is created upon sign up. Each `User` is associat
 
 ### Billing & subscriptions using Stripe
 
-Following [Rails Designer's Stripe Billing set up](https://railsdesigner.com/saas/billing-with-stripe/), offer subscriptions right away.
+Following [Rails Designer's Stripe Billing set up](https://railsdesigner.com/saas/billing-with-stripe/), offer subscriptions right away. Just update `config/configurations/plans.yml` and add your Stripe API key and Signing secret to your credentials.
 
 
 ### Team invitations

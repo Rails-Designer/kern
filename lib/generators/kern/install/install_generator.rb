@@ -11,6 +11,7 @@ module Kern
     def add_gems
       gem "stripe"
       gem "rails_icons"
+      gem "fuik"
     end
 
     def enable_bcrypt
@@ -47,6 +48,18 @@ module Kern
       template "configurations/plans.yml", "config/configurations/plans.yml"
 
       template "configurations/README.md", "config/configurations/README.md"
+    end
+
+    def install_fuik
+      Bundler.with_unbundled_env do
+        rails_command "generate fuik:install"
+      end
+
+      route "mount Fuik::Engine, at: '/'" if Rails.env.test? # ¯\_(ツ)_/¯
+
+      source_paths.unshift(File.expand_path("../../../..", __dir__))
+      directory "app/webhooks/stripe", "app/webhooks/stripe"
+      source_paths.shift
     end
 
     def mount_engine

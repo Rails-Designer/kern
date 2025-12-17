@@ -13,7 +13,7 @@
       </p>
     </div>
 
-    <ul class="grid gap-2 grow-1 px-4 py-4 bg-white border-y border-gray-100">
+    <ul class="grid gap-2 grow-1 px-4 py-4 bg-white border-t border-gray-100">
       <% plan[:features].each do |key, value| %>
         <% next if value == false %>
 
@@ -31,5 +31,5 @@
     </ul>
   </div>
 
-  <%= button_to "Subscribe", subscriptions_path, form_class: "flex justify-center px-4 py-3", params: {price_id: plan[:price_id]}, class: "btn-primary btn-block" %>
+  <%= button_to "Subscribe", subscriptions_path, form_class: "flex justify-center px-4 py-3 border-t border-gray-100", params: {price_id: plan[:price_id]}, class: "btn-primary btn-block" %>
 </li>

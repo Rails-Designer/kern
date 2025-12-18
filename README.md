@@ -77,10 +77,7 @@ Kern works out of the box after installation. All features are available immedia
 
 ### Generators
 
-If you want to customize any available view or feature, you can run:
-
-- `bin/rails generate kern:views`;
-- `bin/rails generate kern:feature`.
+If you want to customize any available feature (e.g. sign up, log in, etc.), you can run: `bin/rails generate kern:feature`.
 
 Append `--help` to see the generator's help.
 

@@ -124,14 +124,15 @@ module Kern
       "application_form.rb",
       "current.rb",
       "member.rb",
+      "member/acting.rb",
+      "member/setup.rb",
       "role.rb",
       "session.rb",
       "signup.rb",
       "user.rb",
-      "workspace.rb",
-      "member/acting.rb",
-      "member/setup.rb",
       "user/workspace_member.rb",
+      "workspace.rb",
+      "workspace/feature_access.rb",
       "workspace/members.rb",
       "workspace/setup.rb"
     ]

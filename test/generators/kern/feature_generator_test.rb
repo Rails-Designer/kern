@@ -85,6 +85,7 @@ module Kern
       assert_file "app/models/member/acting.rb"
       assert_file "app/models/member/setup.rb"
       assert_file "app/models/workspace.rb"
+      assert_file "app/models/workspace/feature_access.rb"
       assert_file "app/models/workspace/members.rb"
       assert_file "app/models/workspace/setup.rb"
 

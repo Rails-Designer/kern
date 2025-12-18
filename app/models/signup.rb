@@ -27,7 +27,7 @@ class Signup < ApplicationForm
   def create_user = User.create!(email_address: email_address, password: password)
 
   # def send_welcome_email_to(user)
-  # Logic to send email
+  #   logic to send email; suggest to use https://github.com/Rails-Designer/courrier/
   # end
 
   def email_is_unique?

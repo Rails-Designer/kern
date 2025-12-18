@@ -1,0 +1,10 @@
+class Workspace::Access < RailsVault::Base
+  # This class is using [Rails Vault](https://github.com/Rails-Designer/rails_vault/)
+  #
+  # You can define each access as follows:
+  #
+  # vault_attribute :member_count, :integer, default: Config::Plans.dig(:default, :features, :member_count)
+  # vault_attribute :email_notifications, :boolean, default: Config::Plans.dig(:default, :features, :email_notifications)
+
+  # For more details how this works https://railsdesigner.com/saas/saas-feature-access/
+end

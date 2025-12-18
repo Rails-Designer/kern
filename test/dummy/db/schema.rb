@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_01_01_000008) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_18_123711) do
   create_table "actors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "member_id", null: false
@@ -59,6 +59,18 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_01_000008) do
     t.index ["slug", "workspace_id"], name: "index_members_on_slug_and_workspace_id", unique: true
     t.index ["user_id"], name: "index_members_on_user_id"
     t.index ["workspace_id"], name: "index_members_on_workspace_id"
+  end
+
+  create_table "rails_vaults", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.json "payload", default: {}, null: false
+    t.integer "resource_id", null: false
+    t.string "resource_type", null: false
+    t.string "scope", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payload"], name: "index_rails_vaults_on_payload"
+    t.index ["resource_type", "resource_id"], name: "index_rails_vaults_on_resource"
+    t.index ["scope"], name: "index_rails_vaults_on_scope"
   end
 
   create_table "roles", force: :cascade do |t|

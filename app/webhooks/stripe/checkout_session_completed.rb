@@ -35,8 +35,7 @@ module Stripe
           interval: item["price"]["recurring"]["interval"]
         )
 
-        # TODO: needs to be added
-        # workspace.add_access(item["price"]["product"])
+        workspace.add_access(item["price"]["product"])
       end
     end
 

@@ -9,13 +9,15 @@ class Workspace::Setup
     ActiveRecord::Base.transaction do
       create_workspace.tap do |workspace|
         workspace.add_member to: @user, role: :owner
+
+        add_feature_access_to workspace
       end
     end
   end
 
   private
 
-  def create_workspace
-    Workspace.create(name: "My Workspace")
-  end
+  def create_workspace = Workspace.create(name: "My Workspace")
+
+  def add_feature_access_to(workspace) = workspace.create_access
 end

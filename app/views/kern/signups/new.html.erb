@@ -1,6 +1,8 @@
 <% content_for :title, "Create your account" %>
 <% content_for :page_title, "Create your account" %>
 
+<%= tag.p "Configure Active Record Encryption before continuing", class: "mx-4 px-2 py-1 text-sm font-medium text-center text-red-900 bg-red-50 border border-red-100 rounded-md" if Rails.env.development? && Rails.application.credentials.active_record_encryption&.primary_key.blank? %>
+
 <%= form_with model: @signup, url: signup_path, class: "px-2 md:px-4" do |form| %>
   <%= form.input :email_address %>
 

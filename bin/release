@@ -9,9 +9,8 @@ if [ -z "$VERSION" ]; then
   exit 1
 fi
 
-# If `VERSION` is a keyword, bump the current version
 if [[ "$VERSION" =~ ^(major|minor|patch)$ ]]; then
-  CURRENT=$(grep -oP 'VERSION = "\K[^"]+' ./lib/kern/version.rb)
+  CURRENT=$(grep -o '"[^"]*"' ./lib/kern/version.rb | tr -d '"')
   IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
 
   case $VERSION in

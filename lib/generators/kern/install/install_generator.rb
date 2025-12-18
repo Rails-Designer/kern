@@ -9,9 +9,10 @@ module Kern
     class_option :skip_migrations, type: :boolean, default: false
 
     def add_gems
-      gem "stripe"
-      gem "rails_icons"
       gem "fuik"
+      gem "rails_icons"
+      gem "rails_vault"
+      gem "stripe"
     end
 
     def enable_bcrypt
@@ -48,6 +49,16 @@ module Kern
       template "configurations/plans.yml", "config/configurations/plans.yml"
 
       template "configurations/README.md", "config/configurations/README.md"
+    end
+
+    def setup_workspace_access
+      Bundler.with_unbundled_env do
+        rails_command "generate rails_vault:install"
+      end
+
+      source_paths.unshift(File.expand_path("../../../..", __dir__))
+      template "app/models/workspace/access.rb.tt", "app/models/workspace/access.rb"
+      source_paths.shift
     end
 
     def install_fuik

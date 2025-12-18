@@ -11,6 +11,7 @@ gem "sqlite3"
 gem "tailwindcss-rails"
 gem "turbo-rails"
 gem "stripe"
+gem "rails_vault"
 
 group :development do
   gem "standard", "~> 1.50.0"

@@ -19,9 +19,10 @@ module Kern
       run_generator %w[--skip-migrations]
 
       assert_file "Gemfile" do |content|
-        assert_match(/gem ['"]stripe['"]/, content)
-        assert_match(/gem ['"]rails_icons['"]/, content)
         assert_match(/gem ['"]fuik['"]/, content)
+        assert_match(/gem ['"]rails_icons['"]/, content)
+        assert_match(/gem ['"]rails_vault['"]/, content)
+        assert_match(/gem ['"]stripe['"]/, content)
       end
     end
 
@@ -44,6 +45,12 @@ module Kern
       assert_file "config/configurations/plans.yml"
       assert_file "config/configurations/urls.yml"
       assert_file "config/configurations/README.md"
+    end
+
+    test "copy workspace access" do
+      run_generator %w[--skip-migrations]
+
+      assert_file "app/models/workspace/access.rb", /class Workspace::Access < RailsVault::Base/
     end
 
     test "fuik setup for Stripe" do

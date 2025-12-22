@@ -16,7 +16,11 @@ module Kern
       if @signup.save
         start_new_session_for @signup.user
 
-        redirect_to root_url
+        begin
+          redirect_to main_app.root_url
+        rescue
+          redirect_to root_url
+        end
       else
         render :new, status: :unprocessable_entity
       end

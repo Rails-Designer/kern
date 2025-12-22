@@ -94,9 +94,9 @@ module Kern
       assert_file "app/views/signups/new.html.erb"
 
       assert_file "app/controllers/signups_controller.rb" do |content|
-        assert_match(/redirect_to root_path/, content)
+        assert_match(/redirect_to root_url/, content)
 
-        assert_no_match(/main_app\.root_path/, content)
+        assert_no_match(/main_app\.root_url/, content)
       end
     end
 

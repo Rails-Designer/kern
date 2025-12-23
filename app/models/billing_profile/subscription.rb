@@ -1,4 +1,4 @@
-module BillingProfile
+class BillingProfile
   class Subscription < ApplicationRecord
     include Sluggable
 

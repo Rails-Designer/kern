@@ -16,7 +16,7 @@ namespace :assets do
   desc "Build Tailwind CSS for distribution"
   task :precompile do
     Dir.chdir("test/dummy") do
-      sh "bundle exec tailwindcss -i app/assets/tailwind/application.css -o app/assets/builds/tailwind.kern.css"
+      sh "bundle exec tailwindcss -i app/assets/tailwind/application.kern.css -o app/assets/builds/tailwind.kern.css"
 
       FileUtils.mkdir_p "../../app/assets/builds"
       FileUtils.cp(

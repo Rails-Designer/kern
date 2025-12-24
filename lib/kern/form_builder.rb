@@ -31,9 +31,10 @@ module Kern
     def check_box(method, options = {}, checked_value = "1", unchecked_value = "0", &block)
       field_classes(options, toggle_input_css)
       label_text = block ? @template.capture(&block) : method.to_s.humanize
+      custom_id = options[:id] || "#{method}_#{tag_value}"
 
       toggle_wrapper do
-        super(method, options, checked_value, unchecked_value) + label(method, label_text)
+        super(method, options, checked_value, unchecked_value) + label(custom_id, label_text)
       end
     end
     alias_method :checkbox, :check_box
@@ -41,9 +42,10 @@ module Kern
     def radio_button(method, tag_value, options = {}, &block)
       field_classes(options, toggle_input_css)
       label_text = block ? @template.capture(&block) : tag_value.to_s.humanize
+      custom_id = options[:id] || "#{method}_#{tag_value}"
 
       toggle_wrapper do
-        super(method, tag_value, options) + toggle_label("#{method}_#{tag_value}", label_text)
+        super(method, tag_value, options) + toggle_label(custom_id, label_text)
       end
     end
 

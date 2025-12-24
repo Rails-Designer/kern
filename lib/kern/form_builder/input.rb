@@ -67,8 +67,8 @@ module Kern
         content_tag(:div, yield, data: {slot: "toggle-field"}, class: "flex items-start gap-x-2 [&>input]:mt-[0.15em]")
       end
 
-      def toggle_label(method, text)
-        label(method, text.html_safe, class: toggle_label_css)
+      def toggle_label(id, text)
+        @template.label_tag(id, text.html_safe, class: toggle_label_css)
       end
 
       private

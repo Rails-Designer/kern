@@ -1,4 +1,4 @@
-<%# locals: (level: :h1, breadcrumbs: [], actions: [], css: class_names("flex items-center gap-x-1 h-8 font-sans font-bold text-gray-950 *:inline-block", {"text-base font-bold tracking-tight md:text-lg": level == :h1, "text-sm font-semibold md:text-base": level == :h2, "text-xs font-medium md:text-sm": level == :h3})) %>
+<%# locals: (level: :h1, breadcrumbs: [], actions: [], css: class_names("flex items-center gap-x-1 h-8 font-sans font-bold text-gray-950 *:inline-block", {"text-base font-bold tracking-tight md:text-lg": level == :h1, "text-sm font-bold md:text-base": level == :h2, "text-xs font-medium md:text-sm": level == :h3})) %>
 <%= tag.header id: "heading", class: class_names("flex items-center justify-between", {"px-4 py-5 border-b border-gray-200/50": level == :h1}) do %>
   <%= tag.send(level, class: css) do %>
     <%= safe_join(breadcrumbs.map.with_index {|it, index| tag.span(link_to(it[:label], it[:href], class: "hover:underline", id: "header_part_link_#{index}") + tag.span("/", class: "ml-1 font-normal text-gray-400"), id: "header_part_#{index}")}) if level == :h1 %>

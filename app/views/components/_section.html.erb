@@ -1,0 +1,12 @@
+<%# locals: (direction: :vertical, heading: nil, description: nil, **options) %>
+<%= tag.section class: class_names("flex pt-4 border-t border-gray-100", {"flex-col gap-2": direction == :vertical, "flex-col gap-4 md:flex-row": direction == :horizontal}) do %>
+  <div class="w-full lg:max-w-1/4">
+    <%= component("heading", level: :h2) { heading } %>
+
+    <%= tag.p description, class: "text-sm text-gray-700 md:text-base" if description.present? %>
+  </div>
+
+  <div class="<%= class_names("w-full", {"lg:max-w-3/4": direction == :horizontal}) %>">
+    <%= yield %>
+  </div>
+<% end %>

@@ -138,6 +138,7 @@ Pulled from [Rails Designer's Components](https://railsdesigner.com/components/)
 Some basic components are included like:
 
 - container; keep all your app's content in check
+- section; easily divide up your screens in sections
 - heading; have consistent headings for each screen
 - enhanced dialog element (works with Turbo Frames and, includes `centered` or a `drawer` variants)
 - flash messages (notifiy your users from the bottom-right)

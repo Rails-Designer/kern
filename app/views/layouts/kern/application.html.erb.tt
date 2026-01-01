@@ -9,10 +9,11 @@
     <%%= csp_meta_tag %>
 
     <%%= stylesheet_link_tag "tailwind.kern", "data-turbo-track": "reload" %>
+    <%%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <script defer src="https://cdn.jsdelivr.net/npm/attractivejs@0.11.0"></script>
   </head>
 
-  <body class="<%%= class_names("antialiased bg-white selection:bg-pink-200/40 selection:text-pink-800/70", yield(:body_class)) %>">
+  <body class="<%%= class_names("antialiased bg-white selection:bg-blue-200/40 selection:text-blue-800/70", yield(:body_class)) %>">
     <div class="flex">
       <%%= render partial: "layouts/kern/application/navigation",
         locals: {
@@ -28,5 +29,6 @@
     </div>
 
     <%%= component "flash" %>
+    <%%= component "dialog" %>
   </body>
 </html>

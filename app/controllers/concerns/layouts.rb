@@ -12,10 +12,10 @@ module Layouts
   def resolve(layout_name, namespace)
     layout_name = layout_name.to_s
 
-    return layout_name if lookup_context.exists?(layout_name, ['layouts'])
+    return layout_name if lookup_context.exists?(layout_name, ["layouts"])
 
     namespaced = "#{namespace}/#{layout_name}"
-    return namespaced if lookup_context.exists?(namespaced, ['layouts'])
+    return namespaced if lookup_context.exists?(namespaced, ["layouts"])
 
     false
   end

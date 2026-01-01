@@ -13,6 +13,6 @@ class Workspace
 
     private
 
-    def purge_orphaned_users! = User.left_joins(:members).where(members: { id: nil }).destroy_all
+    def purge_orphaned_users! = User.left_joins(:members).where(members: {id: nil}).destroy_all
   end
 end

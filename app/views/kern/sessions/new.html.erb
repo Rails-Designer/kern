@@ -4,7 +4,7 @@
 <%= form_with url: session_path, class: "px-2 md:px-4" do |form| %>
   <%= form.input :email_address, type: :email, required: true, autofocus: true, autocomplete: "username", value: params[:email_address] %>
 
-  <%= form.input :password, required: true, autocomplete: "current-password", maxlength: 72, label_suffix: link_to("Forgot password?", new_password_path, class: "font-normal text-gray-400 hover:text-gray-500") %>
+  <%= form.input :password, required: true, autocomplete: "current-password", maxlength: 72, label_suffix: link_to("Forgot password?", new_password_path, class: "no-underline") %>
 
   <div class="buttons">
     <%= form.submit "Log in", data: {turbo_submits_with: "Logging in…"}, class: "btn-primary" %>

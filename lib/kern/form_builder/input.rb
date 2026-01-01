@@ -29,8 +29,8 @@ module Kern
 
           @template.safe_join([
             (if label_suffix
-               @template.content_tag(:div, class: "flex items-center justify-between") do
-                 @template.safe_join([label_html, @template.content_tag(:span, label_suffix.html_safe, class: "text-xs font-medium text-gray-500")].compact)
+               @template.content_tag(:div, class: label_suffix_wrapper_css) do
+                 @template.safe_join([label_html, @template.content_tag(:span, label_suffix.html_safe, class: label_suffix_css)].compact)
                end
              end),
 
@@ -38,7 +38,7 @@ module Kern
 
             input_field(attribute, options),
 
-            (@template.content_tag(:p, hint.html_safe, class: "flex items-center gap-x-1 mt-0.5 px-0.5 text-xs font-light text-gray-500") if hint)
+            (@template.content_tag(:p, hint.html_safe, class: hint_css) if hint)
           ].compact)
         end
       end
@@ -48,13 +48,13 @@ module Kern
         label_options = options[:label] || {}
         field_errors = @object&.errors&.where(attribute)
 
-        label_options[:class] = class_names("flex items-center gap-1 text-sm font-medium", {"text-gray-700": field_errors&.none?, "text-red-600": field_errors&.any?})
+        label_options[:class] = label_css(has_errors: field_errors&.any?)
         label_text = text || I18n.t("labels.#{attribute}", default: attribute.to_s.humanize)
 
         super(attribute, label_options) do
           safe_join([
             begin
-              icon("warning-circle", class: "size-3.5 scale-100 transition ml-0 ease-in-out duration-300 starting:ml-3.5 starting:scale-0") if field_errors&.any?
+              icon("warning-circle", class: label_icon_css) if field_errors&.any?
             rescue
               nil
             end,

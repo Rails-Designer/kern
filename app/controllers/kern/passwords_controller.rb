@@ -5,7 +5,7 @@ module Kern
     before_action :redirect_to_root, if: -> { authenticated? }, only: %w[new create]
     before_action :set_user_by_token, only: %w[edit update]
 
-    layout "kern/auth"
+    define_layout :auth
 
     def new
     end

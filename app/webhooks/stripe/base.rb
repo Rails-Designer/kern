@@ -1,5 +1,5 @@
 module Stripe
-  class Base < Fuik::Event
+  class Base < (defined?(Fuik::Event) ? Fuik::Event : Object)
     def self.verify!(request)
       secret = Rails.application.credentials.dig(:stripe, :signing_secret)
       signature = request.headers["Stripe-Signature"]

@@ -5,6 +5,41 @@ module Kern
         "w-full [&[data-slot='field']+[data-slot='field']]:mt-4"
       end
 
+      def label_css(has_errors: false)
+        base = <<~CSS
+          flex items-center gap-1 text-sm font-medium
+        CSS
+
+        class_names(base, has_errors ? "text-red-600" : "text-gray-700")
+      end
+
+      def label_icon_css
+        <<~CSS
+          size-3.5
+          scale-100 transition ml-0 ease-in-out duration-300
+          starting:ml-3.5 starting:scale-0
+        CSS
+      end
+
+      def label_suffix_wrapper_css
+        <<~CSS
+          flex items-center justify-between
+        CSS
+      end
+
+      def label_suffix_css
+        <<~CSS
+          text-xs font-medium text-gray-500
+        CSS
+      end
+
+      def hint_css
+        <<~CSS
+          flex items-center gap-x-1 mt-0.5 px-0.5
+          text-xs font-light text-gray-500
+        CSS
+      end
+
       def input_css
         <<~CSS
           w-full px-2.5 py-1.5

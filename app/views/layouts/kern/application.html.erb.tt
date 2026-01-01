@@ -15,7 +15,7 @@
 
   <body class="<%%= class_names("antialiased bg-white selection:bg-blue-200/40 selection:text-blue-800/70", yield(:body_class)) %>">
     <div class="flex">
-      <%%= render partial: "layouts/kern/application/navigation",
+      <%%= render partial: "layouts/application/navigation",
         locals: {
           links: [
             {label: "Home", href: root_path, icon: "house-line"},

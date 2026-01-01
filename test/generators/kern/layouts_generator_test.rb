@@ -17,6 +17,7 @@ module Kern
       assert_file "app/views/layouts/auth.html.erb"
 
       assert_file "app/views/layouts/application.html.erb" do |content|
+        assert_match(/layouts\/application\/navigation/, content)
         assert_match(/stylesheet_link_tag \"tailwind\"/, content)
         assert_match(/href: root_path/, content)
         assert_no_match(/main_app\.root_path/, content)

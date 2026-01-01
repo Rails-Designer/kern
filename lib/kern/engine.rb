@@ -8,6 +8,10 @@ module Kern
       Kern::Config.load!
     end
 
+    config.to_prepare do
+      Kern::FormBuilder.load_styles
+    end
+
     initializer "kern.helpers" do
       ActiveSupport.on_load(:action_controller_base) do
         helper Kern::Engine.helpers

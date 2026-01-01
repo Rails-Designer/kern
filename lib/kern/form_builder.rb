@@ -1,4 +1,3 @@
-require "kern/form_builder/styles"
 require "kern/form_builder/input"
 
 module Kern
@@ -6,7 +5,15 @@ module Kern
     include ActionView::Helpers::TagHelper
 
     include Input
-    include Styles
+
+    def self.load_styles
+      if defined?(::FormBuilder::Styles)
+        include ::FormBuilder::Styles
+      else
+        require "kern/form_builder/styles"
+        include Styles
+      end
+    end
 
     %w[
       text_field email_field password_field

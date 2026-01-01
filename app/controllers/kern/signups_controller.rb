@@ -4,7 +4,7 @@ module Kern
 
     before_action :redirect_to_root, if: -> { authenticated? }, only: %w[new create]
 
-    layout "kern/auth"
+    define_layout :auth
 
     def new
       @signup = Signup.new

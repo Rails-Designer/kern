@@ -38,7 +38,7 @@ module Kern
     def check_box(method, options = {}, checked_value = "1", unchecked_value = "0", &block)
       field_classes(options, toggle_input_css)
       label_text = block ? @template.capture(&block) : method.to_s.humanize
-      custom_id = options[:id] || "#{method}_#{tag_value}"
+      custom_id = options[:id] || method
 
       toggle_wrapper do
         super(method, options, checked_value, unchecked_value) + label(custom_id, label_text)

@@ -13,6 +13,7 @@ module Kern
         password: :password_field,
         url: :url_field,
         text: :text_area,
+        file: :file_field,
         integer: :number_field,
         float: :number_field,
         decimal: :number_field,
@@ -83,6 +84,7 @@ module Kern
         return :email if attribute.to_s.end_with?("email")
         return :password if attribute.to_s.include?("password")
         return :url if attribute.match?(/url|website|site/)
+        return :file if attribute.match?(/hero|image|avatar/)
         return :string unless valid?(attribute)
 
         @object.type_for_attribute(attribute.to_s).type

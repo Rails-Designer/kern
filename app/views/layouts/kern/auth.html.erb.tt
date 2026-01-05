@@ -34,6 +34,8 @@
             <%%= tag.h1 yield(:page_title), class: "mx-2 mt-8 font-sans text-center text-base font-bold text-gray-800 md:mx-4" %>
 
             <%%= yield %>
+
+            <%%= tag.p yield(:alternative_action), class: "px-2 pt-4 pb-2 border-t border-gray-100 empty:hidden md:pb-4" %>
           </section>
         </div>
       </div>

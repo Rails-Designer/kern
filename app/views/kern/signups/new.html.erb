@@ -13,6 +13,4 @@
   </div>
 <% end %>
 
-<p class="px-2 pt-4 pb-2 border-t border-gray-100 md:pb-4">
-  <%= link_to "Already have an account?", new_session_path, class: "block text-center text-sm font-medium text-gray-500 hover:underline" %>
-</p>
+<%= content_for(:alternative_action) { link_to "Already have an account??", new_session_path, class: "block text-center text-sm font-medium text-gray-500 hover:underline" } %>

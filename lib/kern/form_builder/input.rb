@@ -64,10 +64,6 @@ module Kern
         end
       end
 
-      def toggle_wrapper(&block)
-        content_tag(:div, yield, data: {slot: "field"}, class: "flex items-start gap-x-2 [&>input]:mt-[0.17em]")
-      end
-
       def toggle_label(id, text)
         @template.label_tag(id, text.html_safe, class: toggle_label_css)
       end

@@ -6,5 +6,9 @@ module Kern
     define_layout :application
 
     default_form_builder Kern::FormBuilder
+
+    private
+
+    def _prefixes = [controller_name] + super
   end
 end

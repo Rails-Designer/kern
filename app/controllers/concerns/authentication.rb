@@ -40,6 +40,10 @@ module Authentication
     session.delete(:return_to_after_authenticating) || root_url
   end
 
+  def redirect_to_root
+    redirect_to root_url || kern.root_url
+  end
+
   def start_new_session_for(user)
     user.sessions.create!(user_agent: request.user_agent.presence || "[No User Agent]", ip_address: request.remote_ip).tap do |session|
       Current.session = session

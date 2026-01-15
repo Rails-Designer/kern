@@ -5,7 +5,9 @@ shared:
 
 development:
   default_price_id: default_price_id
+  trial_period_days: 7
 
 production:
-  default_price_id: <%= ENV.fetch("STRIPE_DEFAULT_PRICE_ID", "price_1SV3laIh6mxtl9CDpVY0viQy") %>
+  default_price_id: <%= ENV.fetch("STRIPE_DEFAULT_PRICE_ID", "TBD") %>
+  trial_period_days: 7
   signing_secret_key: <%= ENV.fetch("STRIPE_SIGNING_KEY", Rails.application.credentials&.stripe&.signing_secret) %>

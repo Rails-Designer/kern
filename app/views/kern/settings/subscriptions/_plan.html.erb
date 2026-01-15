@@ -23,7 +23,7 @@
           <% if value == true %>
             <%= key.to_s.humanize %>
           <% else %>
-            <% label = key.to_s.gsub('_count', '').humanize.downcase %>
+            <% label = key.to_s.gsub("_count", "").humanize.downcase %>
             <%= pluralize(number_with_delimiter(value), label) %>
           <% end %>
         </li>
@@ -31,5 +31,5 @@
     </ul>
   </div>
 
-  <%= button_to "Subscribe", subscriptions_path, form_class: "flex justify-center px-4 py-3 border-t border-gray-100", params: {price_id: plan[:price_id]}, class: "btn-primary btn-block" %>
+  <%= button_to "Subscribe", subscriptions_path, params: {price_id: plan[:price_id]}, data: {turbo: false}, form_class: "flex justify-center px-4 py-3 border-t border-gray-100", class: "btn-primary btn-block" %>
 </li>

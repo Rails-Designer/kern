@@ -17,7 +17,7 @@ module Stripe
 
     def subscription_resource
       @subscription_resource ||= ::Stripe::Subscription.retrieve(
-        payload["data"]["object"]["id"],
+        id: payload["data"]["object"]["subscription"],
         expand: ["items.data.price"]
       )
     end

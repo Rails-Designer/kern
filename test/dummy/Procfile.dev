@@ -1,2 +1,2 @@
 web: bin/rails server -p 3000
-css: bundle exec tailwindcss -i app/assets/tailwind/application.css -o app/assets/builds/tailwind.kern.css -w
+css: bundle exec tailwindcss -i app/assets/tailwind/application.kern.css -o app/assets/builds/tailwind.kern.css -w

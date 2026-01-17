@@ -1,4 +1,13 @@
 @layer base {
+  html {
+    overflow-y: scroll;
+
+    @supports (scrollbar-gutter: stable) {
+      overflow-y: auto;
+      scrollbar-gutter: stable;
+    }
+  }
+
   a:not([class]) {
     @apply underline;
 

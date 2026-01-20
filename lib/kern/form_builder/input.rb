@@ -52,6 +52,12 @@ module Kern
         label_options[:class] = label_css(has_errors: field_errors&.any?)
         label_text = text || I18n.t("labels.#{attribute}", default: attribute.to_s.humanize)
 
+        if field_errors&.any?
+          error_message = field_errors.first.message
+
+          label_text = "#{label_text} #{error_message}"
+        end
+
         super(attribute, label_options) do
           safe_join([
             begin

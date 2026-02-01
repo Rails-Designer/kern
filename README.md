@@ -2,6 +2,9 @@
 
 Rails engine that handles the SaaS foundation: authentication, team invitations, subscription/billing, and common partials. Skip the boilerplate and start shipping the actual product.
 
+> [!NOTE]
+> Kern is heavily WIP, while most features are solid, the DX might be a bit less so.
+
 
 <table>
   <tr>

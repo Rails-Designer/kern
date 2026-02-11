@@ -23,6 +23,7 @@ module Kern
         assert_match(/gem ['"]rails_icons['"]/, content)
         assert_match(/gem ['"]rails_vault['"]/, content)
         assert_match(/gem ['"]stripe['"]/, content)
+        assert_match(/gem ['"]mata['"]/, content)
       end
     end
 
@@ -68,6 +69,13 @@ module Kern
       run_generator %w[--skip-migrations]
 
       assert_file "config/routes.rb", /mount Kern::Engine => "\/"/
+    end
+
+    test "adds rack initializer" do
+      run_generator %w[--skip-migrations]
+
+      assert_file "config/initializers/rack.rb", /Rails.application.config.middleware.delete\(Rack::Runtime\)/
+      assert_file "config/initializers/rack.rb", /Mata/
     end
 
     private

@@ -13,6 +13,7 @@ module Kern
       gem "rails_icons"
       gem "rails_vault"
       gem "stripe"
+      gem "mata"
     end
 
     def enable_bcrypt
@@ -49,6 +50,10 @@ module Kern
       template "configurations/plans.yml", "config/configurations/plans.yml"
 
       template "configurations/README.md", "config/configurations/README.md"
+    end
+
+    def copy_rack_initializer
+      template "initializers/rack.rb", "config/initializers/rack.rb"
     end
 
     def setup_workspace_access

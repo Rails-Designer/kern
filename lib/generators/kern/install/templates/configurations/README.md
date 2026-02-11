@@ -21,8 +21,8 @@ Config::Urls.site
 You can override any configuration value using environment variables. For example, in `urls.yml`:
 ```yaml
 shared:
-  app: <%= ENV.fetch("URLS_APP", "http://localhost:3000") %>
-  site: <%= ENV.fetch("URLS_SITE", "https://example.com") %>
+  app: <%%= ENV.fetch("URLS_APP", "http://localhost:3000") %>
+  site: <%%= ENV.fetch("URLS_SITE", "https://example.com") %>
 ```
 
 The `URLS_` prefix is a recommended convention but not required. Use any naming convention that works for your application.
